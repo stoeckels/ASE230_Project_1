@@ -73,6 +73,34 @@ if ($resource === 'projects' && $count === 1) {
             break;
     }
 
+// /projects/{id}/tasks
+} elseif ($resource === 'projects' && $count === 3 && $segments[2] === 'tasks') {
+    allow_methods(['GET', 'POST']);
+    $projectId = parse_id($segments[1]);
+
+    if ($method === 'GET') {
+        get_project_tasks($projectId);
+    } else {
+        create_task($projectId);
+    }
+
+// /tasks/{id}
+} elseif ($resource === 'tasks' && $count === 2) {
+    allow_methods(['GET', 'PUT', 'DELETE']);
+    $id = parse_id($segments[1]);
+
+    switch ($method) {
+        case 'GET':
+            get_task($id);
+            break;
+        case 'PUT':
+            update_task($id);
+            break;
+        case 'DELETE':
+            delete_task($id);
+            break;
+    }
+
 } else {
     sendJsonError(404, 'Not found');
 }
