@@ -1,10 +1,52 @@
 <?php
-// INCOMPLETE LEARNING EXAMPLE: no authentication implementation is provided.
-// TODO: Read and validate a Bearer token using the lecture concepts.
-// TODO: Reject missing or invalid credentials with an appropriate response.
-// TODO: Allow protected operations only after successful authentication.
-// Write this implementation yourself; this stub never authorizes a request.
+// Bearer token auth
 
-function check_token() {
-    throw new LogicException('TODO: implement Bearer token authentication.');
+// Read token from header
+function getBearerToken(): ?string
+{
+    $headers = getallheaders();
+
+    if (isset($headers['Authorization'])) {
+        if (preg_match('/Bearer\s+(.*)$/i', $headers['Authorization'], $matches)) {
+            return trim($matches[1]);
+        }
+    }
+
+    return null;
+}
+
+// Check token
+function isValidToken(string $token): string|false
+{
+    $validTokens = [
+        'admin-demo-token' => 'admin',
+    ];
+
+    return $validTokens[$token] ?? false;
+}
+
+// Block request without valid token
+function requireAuth(): string
+{
+    $token = getBearerToken();
+
+    if (!$token) {
+        sendJsonError(401, 'Bearer token required');
+    }
+
+    $user = isValidToken($token);
+    if (!$user) {
+        sendJsonError(401, 'Invalid or expired token');
+    }
+
+    return $user;
+}
+
+// JSON error response
+function sendJsonError(int $statusCode, string $message): void
+{
+    http_response_code($statusCode);
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'error' => $message]);
+    exit;
 }
