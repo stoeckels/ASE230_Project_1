@@ -1,0 +1,6 @@
+-- INCOMPLETE LEARNING EXAMPLE: this file intentionally executes no SQL.
+-- Importing it does NOT create tables or insert sample records.
+-- Design and write your own database schema; renaming an example is not enough.
+-- TODO: Define tables, columns, data types, keys, and constraints for your domain.
+-- TODO: Add seed data only if your project needs it.
+-- TODO: Document initial records and what happens if this file is run again.
