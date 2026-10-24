@@ -1,6 +1,6 @@
 <?php
 // Endpoint handlers
-// Ref: 3. Connecting REST API Server to MySQL with PDO.pdf pp. 11, 15; module1/code/6_RestAPI/api/handlers_pdo.php
+// Ref: 3. Connecting REST API Server to MySQL with PDO.pdf pp. 14-22; module1/code/6_RestAPI/api/handlers_pdo.php
 
 // Projects
 

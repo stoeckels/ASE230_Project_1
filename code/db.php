@@ -1,7 +1,7 @@
 <?php
 // Connect to MySQL with PDO
 // Settings come from environment variables, with local defaults
-// Ref: 2. Connect PHP Server with MySQL.pdf pp. 12-13, 16-17; module1/code/6_RestAPI/api/database.php
+// Ref: 2. Connect PHP Server with MySQL.pdf pp. 12-13, 16-17; 3. Connecting REST API Server to MySQL with PDO.pdf pp. 11-12; module1/code/6_RestAPI/api/database.php
 
 function get_db(): PDO
 {
