@@ -1,212 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Student Management API Test Client</title>
+  <title>Project Tracker API Test</title>
   <style>
-    body { font-family: sans-serif; margin: 24px; max-width: 900px; }
-    h2 { color: #1e3a8a; }
-    h3 { margin-top: 24px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
-    .endpoint-card { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; margin-bottom: 12px; }
-    .method { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; color: #fff; margin-right: 8px; }
-    .get { background-color: #0284c7; }
-    .post { background-color: #16a34a; }
-    .put { background-color: #d97706; }
-    .delete { background-color: #dc2626; }
-    input { margin: 4px 6px 4px 0; padding: 4px 8px; font-size: 14px; }
-    button { padding: 6px 14px; cursor: pointer; font-weight: bold; background: #2563eb; color: white; border: none; border-radius: 4px; margin-top: 4px; }
-    button:hover { background: #1d4ed8; }
-    pre { background: #0f172a; color: #38bdf8; padding: 10px; border-radius: 4px; font-size: 13px; overflow-x: auto; min-height: 20px; }
-    .warning-box { background: #fef2f2; border-left: 4px solid #ef4444; padding: 12px; margin-bottom: 20px; color: #991b1b; }
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+
+    pre {
+      background: #eee;
+      padding: 8px;
+      white-space: pre-wrap;
+    }
   </style>
 </head>
+
 <body>
-  <h2>Student Management API Test Page (10 Endpoints)</h2>
-  <div class="warning-box">
-    <strong>Incomplete learning example:</strong> Only the example layout is provided.
-    API, database, authentication, and test implementations must be written by you.
-    The buttons show placeholders and send no requests. Names, fields, and example
-    values illustrate the documentation; they do not constitute a working solution.
-  </div>
+  <h1>Project Tracker API Test</h1>
+  <p>Run the server first, then open http://localhost:8080/test_client.html</p>
 
-  <div class="warning-box">
-    <strong>Note:</strong> Always access this file via HTTP at <code>http://localhost:8080/test_client.html</code> while the server is running.
-    Never open it directly as a <code>file:///</code> URL, or browser security will block API calls.
-  </div>
+  <p>Token: <input id="token" value="admin-demo-token"></p>
 
-  <!-- Students Section (5 APIs) -->
-  <h3>Students Resource</h3>
+  <h2>Projects</h2>
 
-  <!-- 1. GET /students -->
-  <div class="endpoint-card">
-    <span class="method get">GET</span><strong>/students</strong> — List all students<br>
-    <button onclick="getStudents()">Send GET /students</button>
-    <pre id="get-students-result">(Results will appear here)</pre>
-  </div>
+  <h3>GET /projects</h3>
+  <button onclick="getProjects()">Send</button>
+  <pre id="get-projects-response"></pre>
 
-  <!-- 2. GET /students/{id} -->
-  <div class="endpoint-card">
-    <span class="method get">GET</span><strong>/students/{id}</strong> — Get a student by ID<br>
-    ID: <input id="student-get-id" type="number" value="1" style="width:70px;">
-    <button onclick="getStudentById()">Send GET /students/{id}</button>
-    <pre id="get-student-id-result">(Results will appear here)</pre>
-  </div>
+  <h3>GET /projects/{id}</h3>
+  ID: <input id="get-project-id" value="1" size="4">
+  <button onclick="getProject()">Send</button>
+  <pre id="get-project-response"></pre>
 
-  <!-- 3. POST /students -->
-  <div class="endpoint-card">
-    <span class="method post">POST</span><strong>/students</strong> — Create a student<br>
-    Name: <input id="student-name" value="Charlie Brown">
-    Email: <input id="student-email" value="charlie@nku.edu">
-    Major: <input id="student-major" value="Cybersecurity">
-    Year: <input id="student-year" type="number" value="1" style="width:60px;"><br>
-    <button onclick="addStudent()">Send POST /students</button>
-    <pre id="post-students-result">(Results will appear here)</pre>
-  </div>
+  <h3>POST /projects</h3>
+  Name: <input id="post-project-name" value="Browser Test Project">
+  Description: <input id="post-project-description" value="Made in the browser">
+  <button onclick="postProject()">Send</button>
+  <pre id="post-project-response"></pre>
 
-  <!-- 4. PUT /students/{id} -->
-  <div class="endpoint-card">
-    <span class="method put">PUT</span><strong>/students/{id}</strong> — Update a student<br>
-    ID: <input id="student-put-id" type="number" value="1" style="width:70px;">
-    Name: <input id="student-put-name" value="Alice Johnson">
-    Email: <input id="student-put-email" value="alice@nku.edu">
-    Major: <input id="student-put-major" value="Computer Science">
-    Year: <input id="student-put-year" type="number" value="3" style="width:60px;"><br>
-    <button onclick="updateStudent()">Send PUT /students/{id}</button>
-    <pre id="put-students-result">(Results will appear here)</pre>
-  </div>
+  <h3>PUT /projects/{id}</h3>
+  ID: <input id="put-project-id" value="1" size="4">
+  Name: <input id="put-project-name" value="Website Redesign v2">
+  Description: <input id="put-project-description" value="Updated in the browser">
+  <button onclick="putProject()">Send</button>
+  <pre id="put-project-response"></pre>
 
-  <!-- 5. DELETE /students/{id} -->
-  <div class="endpoint-card">
-    <span class="method delete">DELETE</span><strong>/students/{id}</strong> — Delete student (Bearer Token Required)<br>
-    ID: <input id="student-del-id" type="number" value="1" style="width:70px;">
-    Token: <input id="student-token" value="secret-token-123">
-    <button onclick="deleteStudent()">Send DELETE /students/{id}</button>
-    <pre id="delete-students-result">(Results will appear here)</pre>
-  </div>
+  <h3>DELETE /projects/{id} (token required)</h3>
+  ID: <input id="delete-project-id" value="1" size="4">
+  <button onclick="deleteProject('valid')">With token</button>
+  <button onclick="deleteProject('none')">No token</button>
+  <button onclick="deleteProject('wrong')">Wrong token</button>
+  <pre id="delete-project-response"></pre>
 
-  <!-- Courses Section (5 APIs) -->
-  <h3>Courses Resource</h3>
+  <hr>
+  <h2>Tasks</h2>
 
-  <!-- 6. GET /courses -->
-  <div class="endpoint-card">
-    <span class="method get">GET</span><strong>/courses</strong> — List all courses<br>
-    <button onclick="getCourses()">Send GET /courses</button>
-    <pre id="get-courses-result">(Results will appear here)</pre>
-  </div>
+  <h3>GET /projects/{id}/tasks</h3>
+  Project ID: <input id="get-project-tasks-id" value="1" size="4">
+  <button onclick="getProjectTasks()">Send</button>
+  <pre id="get-project-tasks-response"></pre>
 
-  <!-- 7. GET /courses/{id} -->
-  <div class="endpoint-card">
-    <span class="method get">GET</span><strong>/courses/{id}</strong> — Get a course by ID<br>
-    ID: <input id="course-get-id" type="number" value="1" style="width:70px;">
-    <button onclick="getCourseById()">Send GET /courses/{id}</button>
-    <pre id="get-course-id-result">(Results will appear here)</pre>
-  </div>
+  <h3>GET /tasks/{id}</h3>
+  ID: <input id="get-task-id" value="1" size="4">
+  <button onclick="getTask()">Send</button>
+  <pre id="get-task-response"></pre>
 
-  <!-- 8. POST /courses -->
-  <div class="endpoint-card">
-    <span class="method post">POST</span><strong>/courses</strong> — Create a course<br>
-    Title: <input id="course-title" value="AI-Enabled Software Engineering">
-    Code: <input id="course-code" value="ASE420">
-    Credits: <input id="course-credits" type="number" value="3" style="width:60px;"><br>
-    <button onclick="addCourse()">Send POST /courses</button>
-    <pre id="post-courses-result">(Results will appear here)</pre>
-  </div>
+  <h3>POST /projects/{id}/tasks</h3>
+  Project ID: <input id="post-task-project-id" value="1" size="4">
+  Title: <input id="post-task-title" value="Browser test task">
+  Status: <input id="post-task-status" value="todo" size="10">
+  Due: <input id="post-task-due" value="2026-12-01" size="10">
+  <button onclick="postTask()">Send</button>
+  <pre id="post-task-response"></pre>
 
-  <!-- 9. PUT /courses/{id} -->
-  <div class="endpoint-card">
-    <span class="method put">PUT</span><strong>/courses/{id}</strong> — Update a course<br>
-    ID: <input id="course-put-id" type="number" value="1" style="width:70px;">
-    Title: <input id="course-put-title" value="Server-Side Web Development">
-    Code: <input id="course-put-code" value="ASE230">
-    Credits: <input id="course-put-credits" type="number" value="4" style="width:60px;"><br>
-    <button onclick="updateCourse()">Send PUT /courses/{id}</button>
-    <pre id="put-courses-result">(Results will appear here)</pre>
-  </div>
+  <h3>PUT /tasks/{id}</h3>
+  ID: <input id="put-task-id" value="1" size="4">
+  Title: <input id="put-task-title" value="Create wireframes">
+  Status: <input id="put-task-status" value="done" size="10">
+  Due: <input id="put-task-due" value="2026-10-01" size="10">
+  <button onclick="putTask()">Send</button>
+  <pre id="put-task-response"></pre>
 
-  <!-- 10. DELETE /courses/{id} -->
-  <div class="endpoint-card">
-    <span class="method delete">DELETE</span><strong>/courses/{id}</strong> — Delete course (Bearer Token Required)<br>
-    ID: <input id="course-del-id" type="number" value="1" style="width:70px;">
-    Token: <input id="course-token" value="secret-token-123">
-    <button onclick="deleteCourse()">Send DELETE /courses/{id}</button>
-    <pre id="delete-courses-result">(Results will appear here)</pre>
-  </div>
+  <h3>DELETE /tasks/{id} (token required)</h3>
+  ID: <input id="delete-task-id" value="1" size="4">
+  <button onclick="deleteTask('valid')">With token</button>
+  <button onclick="deleteTask('none')">No token</button>
+  <button onclick="deleteTask('wrong')">Wrong token</button>
+  <pre id="delete-task-response"></pre>
 
   <script>
-    // INCOMPLETE: the layout is illustrative; request implementations are omitted.
-    // Write your own tests for your project. These buttons make no API requests.
-    const baseUrl = 'http://localhost:8080';
-
-    async function getStudents() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('get-students-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    function val(id) {
+      return document.getElementById(id).value.trim();
     }
 
-    async function getStudentById() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('get-student-id-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    // Send request, show status and JSON
+    async function callApi(responseId, method, path, body, tokenMode) {
+      const responseBox = document.getElementById(responseId);
+      const headers = {};
+
+      if (body) headers['Content-Type'] = 'application/json';
+      if (tokenMode === 'valid') headers['Authorization'] = 'Bearer ' + val('token');
+      if (tokenMode === 'wrong') headers['Authorization'] = 'Bearer wrong-token';
+
+      try {
+        const response = await fetch(path, {
+          method: method,
+          headers: headers,
+          body: body ? JSON.stringify(body) : null
+        });
+        const data = await response.json();
+        responseBox.textContent = method + ' ' + path + ' -> ' + response.status + '\n\n' + JSON.stringify(data, null, 2);
+      } catch (error) {
+        responseBox.textContent = 'Error: ' + error.message;
+      }
     }
 
-    async function addStudent() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('post-students-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    // Projects
+
+    function getProjects() {
+      callApi('get-projects-response', 'GET', '/projects');
     }
 
-    async function updateStudent() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('put-students-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    function getProject() {
+      callApi('get-project-response', 'GET', '/projects/' + val('get-project-id'));
     }
 
-    async function deleteStudent() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('delete-students-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    function postProject() {
+      callApi('post-project-response', 'POST', '/projects', {
+        name: val('post-project-name'),
+        description: val('post-project-description')
+      });
     }
 
-    async function getCourses() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('get-courses-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    function putProject() {
+      callApi('put-project-response', 'PUT', '/projects/' + val('put-project-id'), {
+        name: val('put-project-name'),
+        description: val('put-project-description')
+      });
     }
 
-    async function getCourseById() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('get-course-id-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    function deleteProject(tokenMode) {
+      callApi('delete-project-response', 'DELETE', '/projects/' + val('delete-project-id'), null, tokenMode);
     }
 
-    async function addCourse() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('post-courses-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    // Tasks
+
+    function getProjectTasks() {
+      callApi('get-project-tasks-response', 'GET', '/projects/' + val('get-project-tasks-id') + '/tasks');
     }
 
-    async function updateCourse() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('put-courses-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    function getTask() {
+      callApi('get-task-response', 'GET', '/tasks/' + val('get-task-id'));
     }
 
-    async function deleteCourse() {
-      // TODO: Read inputs, send the appropriate request, and display status/results.
-      // For protected endpoints, test valid, missing, and invalid credentials.
-      document.getElementById('delete-courses-result').textContent =
-        'Not implemented: write this API test yourself. No request was sent.';
+    function postTask() {
+      callApi('post-task-response', 'POST', '/projects/' + val('post-task-project-id') + '/tasks', {
+        title: val('post-task-title'),
+        status: val('post-task-status'),
+        due_date: val('post-task-due') || null
+      });
     }
 
+    function putTask() {
+      callApi('put-task-response', 'PUT', '/tasks/' + val('put-task-id'), {
+        title: val('put-task-title'),
+        status: val('put-task-status'),
+        due_date: val('put-task-due') || null
+      });
+    }
+
+    function deleteTask(tokenMode) {
+      callApi('delete-task-response', 'DELETE', '/tasks/' + val('delete-task-id'), null, tokenMode);
+    }
   </script>
 </body>
+
 </html>
