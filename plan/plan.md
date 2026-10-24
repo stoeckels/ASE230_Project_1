@@ -16,9 +16,8 @@ Canvas is the official source for exact deadlines.
 ## Your Project 1 Submission Date
 
 1. **When (Plan):** Week 7, Friday
-2. **When (Actual):** TBD
-3. **Comment:** Finishing by Week 7 instead of the Week 9 deadline keeps some of Week 8 free for Midterm 1 studying.
-
+2. **When (Actual):** Week 9, Friday
+3. **Comment:** I didn't really start until the due date, honestly, because of other classes, midterm prep, and work schedule, as well as sheer procrastination. Looking at the project yesterday and gauging the difficulty, I ended up taking off work in order to pour a lot of time into this today. No matter the schedule, I hope the quality of my work still stands. For Project 2 I hope to be much more proactive because this certainly wasn't easy to do in such a short amount of time. You were right about starting early. 
 ---
 
 ## Planned API Endpoints
@@ -42,16 +41,16 @@ DELETE /students/1 → Delete student *
 
 | # | Endpoint | Description | Bearer | Implemented On |
 |---|----------|--------------|:---:|---|
-| 1 | GET /projects | Get all projects |  |  |
-| 2 | GET /projects/{id} | Get project by ID |  |  |
-| 3 | POST /projects | Create new project |  |  |
-| 4 | PUT /projects/{id} | Update project |  |  |
-| 5 | DELETE /projects/{id} | Delete project | * |  |
-| 6 | GET /projects/{project_id}/tasks | Get all tasks for a project |  |  |
-| 7 | GET /tasks/{id} | Get task by ID |  |  |
-| 8 | POST /projects/{project_id}/tasks | Create new task under a project |  |  |
-| 9 | PUT /tasks/{id} | Update task |  |  |
-| 10 | DELETE /tasks/{id} | Delete task | * |  |
+| 1 | GET /projects | Get all projects |  | Week 9, Friday |
+| 2 | GET /projects/{id} | Get project by ID |  | Week 9, Friday |
+| 3 | POST /projects | Create new project |  | Week 9, Friday |
+| 4 | PUT /projects/{id} | Update project |  | Week 9, Friday |
+| 5 | DELETE /projects/{id} | Delete project | * | Week 9, Friday |
+| 6 | GET /projects/{project_id}/tasks | Get all tasks for a project |  | Week 9, Friday |
+| 7 | GET /tasks/{id} | Get task by ID |  | Week 9, Friday |
+| 8 | POST /projects/{project_id}/tasks | Create new task under a project |  | Week 9, Friday |
+| 9 | PUT /tasks/{id} | Update task |  | Week 9, Friday |
+| 10 | DELETE /tasks/{id} | Delete task | * | Week 9, Friday |
 
 ---
 
@@ -61,8 +60,8 @@ DELETE /students/1 → Delete student *
 
 1. **What:** Finalize all 10 endpoints planned in HW2 (2 of them Bearer-token protected); design the `projects` and `tasks` MySQL tables (e.g., each task belongs to a project via a foreign key).
 2. **When (Plan):** Week 5, Friday
-3. **When (Actual):** TBD  
-4. **Comment:** A two-table schema is small enough to finish in the first week.
+3. **When (Actual):** Week 9, Friday
+4. **Comment:** A two-table schema is small enough to finish in the first week. This was relatively simple to do within a short amount of time.
 
 ---
 
@@ -70,8 +69,8 @@ DELETE /students/1 → Delete student *
 
 1. **What:** Implement CRUD endpoints and create cURL plus HTML/JavaScript tests.
 2. **When (Plan):** Week 6, Friday
-3. **When (Actual):** TBD  
-4. **Comment:** Finishing both `projects` and `tasks` endpoints in Week 6 keeps implementation ahead of the HW3 Q&A.
+3. **When (Actual):** Week 9, Friday
+4. **Comment:** Finishing both `projects` and `tasks` endpoints in Week 6 keeps implementation ahead of the HW3 Q&A. This was the most difficult milestone, and it ended up taking a lot of my time today.
 
 ---
 
@@ -79,7 +78,7 @@ DELETE /students/1 → Delete student *
 
 1. **What:** Complete tutorial slides, test NGINX deployment, and organize `code/`, `presentation/`, and `plan/`.
 2. **When (Plan):** Week 7, Friday
-3. **When (Actual):** TBD  
-4. **Comment:** Finishing this in Week 7, right after the HW3 Q&A, means all project work is done before Midterm 1 week so I can study without deadline pressure.
+3. **When (Actual):** Week 9, Friday
+4. **Comment:** Finishing this in Week 7, right after the HW3 Q&A, means all project work is done before Midterm 1 week so I can study without deadline pressure. The tutorial slides definitely took a lot longer than getting NGINX properly working.
 
 ---
