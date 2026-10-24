@@ -1,5 +1,6 @@
 -- Projects and tasks tables
 -- Running this file resets the database to the sample data
+-- Ref: 2. Connect PHP Server with MySQL.pdf p. 8; module1/code/6_RestAPI/api/schema.sql
 
 DROP TABLE IF EXISTS tasks;
 DROP TABLE IF EXISTS projects;

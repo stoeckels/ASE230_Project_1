@@ -1,5 +1,6 @@
 <?php
 // API router
+// Ref: 2. Building REST API Server with PHP and JSON.pdf pp. 16, 22; module1/code/6_RestAPI/api/index.php
 
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/auth.php';

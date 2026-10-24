@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # cURL tests for all 10 endpoints
 # Usage: bash code/test_curl.sh (server must be running)
+# Ref: 3. Bearer Token Authentication.pdf p. 13; 4. Testing REST API Server.pdf p. 8; module1/code/7_Security/Basics/bearer/test_curl.sh
 
 BASE_URL="${BASE_URL:-http://localhost:8080}"
 TOKEN="admin-demo-token"

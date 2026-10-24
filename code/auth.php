@@ -1,5 +1,6 @@
 <?php
 // Bearer token auth
+// Ref: 3. Bearer Token Authentication.pdf pp. 9-11; module1/code/7_Security/Basics/bearer/bearer_auth.php
 
 // Read token from header
 function getBearerToken(): ?string
